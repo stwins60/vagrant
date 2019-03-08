@@ -1,46 +1,98 @@
-Please note that the Vagrant issue tracker is in priority reserved for bug reports and enhancements. For general usage questions, please use the Vagrant mailing list:
-https://groups.google.com/forum/#!forum/vagrant-up. Thank you!
 
-**Tip:** Before submitting your issue, don't hesitate to remove the above introductory text, possible empty sections (e.g. References), and this tip.
 
 ### Vagrant version
 Run `vagrant -v` to show the version. If you are not running the latest version
 of Vagrant, please upgrade before submitting an issue.
+Version: 20190307.0.0
 
 ### Host operating system
-This is the operating system that you run locally.
+Windows 10
 
-### Guest operating system
-This is the operating system you run in the virtual machine.
 
 ### Vagrantfile
-```ruby
-# Copy-paste your Vagrantfile here (but don't include sensitive information such as passwords, authentication tokens, or email addresses)
-```
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
 
-Please note, if you are using Homestead or a different Vagrantfile format, we
-may be unable to assist with your issue. Try to reproduce the issue using a
-vanilla Vagrantfile first.
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+Vagrant.configure("2") do |config|
+  # The most common configuration options are documented and commented below.
+  # For a complete reference, please see the online documentation at
+  # https://docs.vagrantup.com.
+
+  # Every Vagrant development environment requires a box. You can search for
+  # boxes at https://vagrantcloud.com/search.
+  config.vm.box = "ubuntu/bionic64"
+
+  # Disable automatic box update checking. If you disable this, then
+  # boxes will only be checked for updates when the user runs
+  # `vagrant box outdated`. This is not recommended.
+  # config.vm.box_check_update = false
+
+  # Create a forwarded port mapping which allows access to a specific port
+  # within the machine from a port on the host machine. In the example below,
+  # accessing "localhost:8080" will access port 80 on the guest machine.
+  # NOTE: This will enable public access to the opened port
+  # config.vm.network "forwarded_port", guest: 80, host: 8080
+
+  # Create a forwarded port mapping which allows access to a specific port
+  # within the machine from a port on the host machine and only allow access
+  # via 127.0.0.1 to disable public access
+  # config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
+
+  # Create a private network, which allows host-only access to the machine
+  # using a specific IP.
+  # config.vm.network "private_network", ip: "192.168.33.10"
+
+  # Create a public network, which generally matched to bridged network.
+  # Bridged networks make the machine appear as another physical device on
+  # your network.
+  # config.vm.network "public_network"
+
+  # Share an additional folder to the guest VM. The first argument is
+  # the path on the host to the actual folder. The second argument is
+  # the path on the guest to mount the folder. And the optional third
+  # argument is a set of non-required options.
+  # config.vm.synced_folder "../data", "/vagrant_data"
+
+  # Provider-specific configuration so you can fine-tune various
+  # backing providers for Vagrant. These expose provider-specific options.
+  # Example for VirtualBox:
+  #
+  # config.vm.provider "virtualbox" do |vb|
+  #   # Display the VirtualBox GUI when booting the machine
+  #   vb.gui = true
+  #
+  #   # Customize the amount of memory on the VM:
+  #   vb.memory = "1024"
+  # end
+  #
+  # View the documentation for the provider you are using for more
+  # information on available options.
+
+  # Enable provisioning with a shell script. Additional provisioners such as
+  # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
+  # documentation for more information about their specific syntax and use.
+  # config.vm.provision "shell", inline: <<-SHELL
+  #   apt-get update
+  #   apt-get install -y apache2
+  # SHELL
+end
+
+
 
 ### Debug output
-Provide a link to a GitHub Gist containing the complete debug output:
-https://www.vagrantup.com/docs/other/debugging.html. The debug output should
-be very long. Do NOT paste the debug output in the issue, just paste the
-link to the Gist.
+https://www.vagrantup.com/intro/getting-started/boxes.html
 
 ### Expected behavior
-What should have happened?
+The latest vagrant box should be ubuntu/bionic64
 
 ### Actual behavior
 What actually happened?
+The website has the outdated vagrant box (hashicorp/precise64)
 
 ### Steps to reproduce
-1.
-2.
-3.
+1. Change the box type from hashicorp/precise64 to ubuntu/bionic64
 
-### References
-Are there any other GitHub issues (open or closed) that should be linked here?
-For example:
-- GH-1234
-- ...
